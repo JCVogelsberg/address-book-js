@@ -1,5 +1,12 @@
 #show-contact {
   display: none;
+  background-color: lightcyan;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-right:15px;
+  padding-left:15px;
+  border-style:ridge;
+  border-color:lightskyblue;
 }
 
 .contact {
@@ -9,4 +16,9 @@
 
 .contact:hover {
   text-decoration: underline;  
+}
+
+body {
+  background-color: floralwhite;
+  ;
 }

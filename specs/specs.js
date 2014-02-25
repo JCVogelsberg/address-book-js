@@ -1,6 +1,6 @@
 describe("Contact", function() {
   describe("fullName", function() {
-    it("concatenate first and last name", function() {
+    it("concatenates first and last name", function() {
       var testContact = Object.create(Contact);
       testContact.firstName = "Bill";
       testContact.lastName = "Murray";
@@ -19,4 +19,14 @@ describe("Address", function() {
       testAddress.fullAddress().should.equal("1234 Main St, Louisville, KY");
     });
   });
+
+  describe("addressValid", function() {
+    it("checks to make sure none of the address fields are empty", function() {
+      var testAddress = Object.create(Address);
+      testAddress.street = "1234 Main St";
+      testAddress.city = "";
+      testAddress.state = "KY";
+      testAddress.addressValid().should.equal(false); 
+    })
+  })
 });

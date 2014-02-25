@@ -1,10 +1,10 @@
 var Contact = {
    fullName: function() {
      return this.firstName + " " + this.lastName;
-   },
+   }/*,
 
    addresses: [],
-   phones: []
+   phones: []*/
 };
 
 var Address = {
@@ -40,8 +40,8 @@ $(document).ready(function() {
   $("#add-phone").click(function() {
     $("#new-phones").append('<div class="new-phone">' + 
                                  '<div class="form-group">' + 
-                                   '<label for="new-phone">Phone</label>' + 
-                                   '<input type="text" class="form-control new-phone">' + 
+                                   '<label for="new-phone-input">Phone</label>' + 
+                                   '<input type="text" class="form-control new-phone-input">' + 
                                  '</div>');
   });
    
@@ -73,17 +73,16 @@ $(document).ready(function() {
       newContact.addresses.push(newAddress);
     });
 
-    $(".new-phone").each(function() {
-      var inputtedPhone = $(this).find("input.new-phone").val();
-      
+    $(".new-phone-input").each(function() {
+      //debugger;
+      var inputtedPhone = $(this).val();      
       var newPhone = Object.create(Phone);
       newPhone.phone = inputtedPhone;
       newContact.phones.push(newPhone);
     });
-    
 
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
-
+ 
     $(".contact").last().click(function() {
       $("#show-contact").show();
 
@@ -92,18 +91,19 @@ $(document).ready(function() {
       $(".last-name").text(newContact.lastName);
 
       $("ul#addresses").text("");
-        newContact.addresses.forEach(function(address) {
-        $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
-        });
+      newContact.addresses.forEach(function(address) {
+      $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
+      });
       
+      console.log(newContact.phones)
+
         $("ul#phones").text("");
-         newContact.phones.forEach(function(phone) {
-         
+        newContact.phones.forEach(function(phone) {
         $("ul#phones").append("<li>" + phone.phoneNumber() + "</li>");  
-       });
+        });
     });
 
-    this.reset;
+  this.reset();
 
   });
 });
